@@ -1,24 +1,27 @@
 
 from flask import Flask, request
+from db import Smartphone
 
 app = Flask(__name__)
+sp = Smartphone('smartphone_store.db')
 
 ## view all smartphone
 @app.route('/smartphones', methods=['GET'])
 def get_all_smartphones():
     """Returns all smartphones in the database"""
-    return 
+    return sp.sql_get_all_smartphones()
+
 # view all smartphones by id
 @app.route('/smartphones/id/<id>', methods=['GET'])
 def get_product_by_id(id):
     """Returns smartphones in the database by id"""
-    return
+    return sp.sql_get_product_by_id(id)
 
 # view smartphone by name
 @app.route('/smartphones/name/<name>', methods=['GET'])
 def get_smartphone_by_name(name):
     """Returns a product by name"""
-    return 
+    return sp.sql_get_smartphone_by_name(name)
 
 # view all smartphones names
 @app.route('/smartphones/names', methods=['GET'])
